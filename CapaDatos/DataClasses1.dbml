@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LinqSteven" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-VTVLHCJ\SQLEXPRESS;Initial Catalog=LinqSteven;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="LinqStevenConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tbl_Producto" Member="Tbl_Producto">
+    <Type Name="Tbl_Producto">
+      <Column Name="pro_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pro_nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="pro_cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pro_estado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="prov_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Proveedor_Tbl_Producto" Member="Tbl_Proveedor" ThisKey="prov_id" OtherKey="prov_id" Type="Tbl_Proveedor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Proveedor" Member="Tbl_Proveedor">
+    <Type Name="Tbl_Proveedor">
+      <Column Name="prov_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="prov_nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="prov_estado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="Tbl_Proveedor_Tbl_Producto" Member="Tbl_Producto" ThisKey="prov_id" OtherKey="prov_id" Type="Tbl_Producto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_Usuarios" Member="Tbl_Usuarios">
+    <Type Name="Tbl_Usuarios">
+      <Column Name="usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="usu_cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_apellido" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="usu_direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="usu_telefono" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="usu_fechacreacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="usu_contrasena" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="usu_nomlogin" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="usu_estado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="usu_correo" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Tusu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_TipoUsuario_Tbl_Usuarios" Member="Tbl_TipoUsuario" ThisKey="Tusu_id" OtherKey="Tusu_id" Type="Tbl_TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
+    <Type Name="Tbl_TipoUsuario">
+      <Column Name="Tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tusu_nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tusu_estado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="Tbl_TipoUsuario_Tbl_Usuarios" Member="Tbl_Usuarios" ThisKey="Tusu_id" OtherKey="Tusu_id" Type="Tbl_Usuarios" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HashMD5" Member="HashMD5">
+    <Type Name="HashMD5">
+      <Column Name="id_hash" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hash_md5" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+      <Column Name="palabra" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
